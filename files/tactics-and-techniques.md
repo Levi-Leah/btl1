@@ -1,0 +1,62 @@
+
+# Tactics and Techniques
+
+- **Spear Phishing**
+  - gathering info on a target beforehand to tailor the phishing email and make it more convincing
+  - OSINT and other phishing techniques can be used to facilitate it
+    - e.g., typosquatting, sender spoofing, impersonation
+- **Impersonation**
+  - w/in or outside the org
+- **Typo squatting**
+  - impersonating domain name or brain by misspelling it
+  - large orgs can generate a list of similarly-named domain and monitors to see if someone registered them
+    - or they just register them themselves
+- **Homoglyphs**
+  - same looking characters from other writing systems but have different unicode
+    - Latin “o” and the Cyrillic “o” have a different Unicode and are therefore different letters.” It also means domains with those two different Os are two different domains.
+  - impossible for users to spot; security training is ineffective here
+    - needs to be addressed via mail security technology
+      - e.g., tools that visit hyperlinks within emails to identify if they are malicious
+  - Domains using non-Latin letters are referred to as internationalized domain names (IDN) and are used quite frequently in homograph attacks
+- **Sender Spoofing**
+  - making the sending address in an email look the same as a legitimate email to make the recipients believe it is coming from a genuine sender
+  - often used w/ credentials harvester
+  - you send an email with a "From:" address that appears to be from a source the recipient trusts
+  - there is no verification done at this point, so SMTP emails can use any FROM address they want
+    - you can look at the sending server IP (X-Originating-IP) and perform a WHOis or IP lookup search to check
+  - you can set a value for the Reply-to address as an email address that we actually have access to
+- **HTML Styling**
+  - code and images are used to style an email to make it look more visually attractive
+  - HTML styling is typically observed with credential harvesters, as they are trying to impersonate an organization
+  - base64 is common but can be in plain text
+- **Attachments**
+  - in phishing campaigns, we will typically see three categories of attachments:
+    - non-malicious files used for social engineering
+      - invoices, letters of appeals, images
+    - non-malicious files w/ malicious hyperlinks
+      - PDFs
+    - malicious files
+      - scripts, macros
+- **Hyperlinks**
+  - can be coupled with additional techniques such as redirected targets to a typo squatted domain or using URL shortening services to disguise the true destination of the link
+  - raises less suspicion than an attachment cause links in email are more common
+  - phishing emails should only be analyzed and opened in a virtual machine or on a “dirty” system
+- **URL-Shortening Services**
+  - prevents some aspects of automated security analysis
+  - `https://wannabrowser.net` simulates a browser and allows you to see where the link leads w/out clicking it
+- **Use of Legitimate Services**
+  - **Email Delivery**
+    - phishers will make use of legitimate services such as free email providers, to bypass defensive measures
+      - `@gmail.com`
+      - `@outlook.com`
+      - `@hotmail.co.uk`
+    - malicious actors will take advantage of email marketing services like `MailGun` or `MailChimp`
+  - **File Hosting**
+    - malicious actors typically host malicious files on free platfprms like `Dropbox`, `OneDrive` or `google Drive` and link to them as they appers legit
+    - attackers can’t upload malicious scripts or executable files like `.exe` but they can create docs w/ macros
+- **Business Email Compromise (BEC)**
+  - phishing attack that focuses on orgs that are likely to transfer large amounts of money to either purchase goods or pay other parties
+  - malicious actor will monitor their target over a period of time to determine which companies the organization pays
+  - they will either compromise an email account belonging to a high-level employee, or spoof the address so it appears legitimate
+  - then will direct the relevant employees to transfer the money to a different bank account
+  - 
