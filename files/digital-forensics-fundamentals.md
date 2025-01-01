@@ -231,6 +231,7 @@
     * could also have metadata
 
 ---
+
 * **evidence handling**
   * mistakes in how evidence is acquired can lead to that evidence being tainted and, subsequently, not forensically sound
   * **Altering the original evidence**
@@ -301,5 +302,76 @@
   * `scalpel`
     * mod the `/etc/scalpel/scalpel.conf` or `/etc/scalpel.conf` if needed
   * `chown`
+    * You could be placed in a position where you lack permission to open a folder/files
 
 ---
+
+## Memory, Pagefile, and Hibernation File
+
+* **Memory**
+  * device that is used to store information for immediate use in a computer or related computer hardware device
+  * memory forensics is analysis of volatile data in a computer’s memory dump
+    * provide insights into runtime system activity
+      * e.g., open network connections and recently executed commands or processes
+  * **Memory/core/system Dump** is a snapshot capture of computer memory data from a specific instant
+    * can contain valuable forensics data about the state of the system before an incident 
+      * running processes, network connections, and malware (if resides purely in memory)
+  * critical data pertaining to attacks will often exist solely in system memory
+    * network connections, account credentials, chat messages, encryption keys, running processes, injected code fragments, and non-cacheable internet history
+  * any program – malicious or otherwise – must be loaded in memory in order to execute
+  * AVs and EDRs may be unable to detect malware written directly into a computer’s physical memory or RAM
+
+---
+
+* **Pagefile**
+  * `Pagefile.sys` is used within Windows to store data from the RAM when it becomes full
+  * it's a contiguous file that is located on the root of the hard drive; infrequently used memory pages are stored to it
+    * contiguous file: file on disk that is not broken apart
+  * data from RAM that's not needed rn is moved there
+  * it can be used as a backup of data in the event of a system crash
+  * Win configures the default size of the `Pagefile.sys` but it can also be altered by the user
+  * `Pagefile.sys` is hidden from the normal Windows user by default
+    * if the file is deleted fully then the system will not function correctly
+    * the system can be configured to store the `pagefile.sys` onto another secondary hard drive
+
+---
+
+* **Swapfile**
+  * Linux uses swap space to store RAM when it is full or when the data is not in current use
+  * traditionally it is a swap partition rather than a swap file and is therefore separate from the other files as it is contained on its own partition
+  * it is possible to create a swap file within Linux and to manage the size of that file if required
+    * it is not as easy and sometimes impossible to adjust the size of a swap partition
+      * disable swap file
+      * `sudo fallocate -l [file size] /swapfile `
+  * `free -h`
+    * provides the breakdown of total, used and free swap space on the system
+  * `swapon –show`
+    * used to identify whether the swap space is a file or a partition
+  * It is also possible to adjust how often the swap space is used within Linux
+    * the default is 60
+    * can be set from 0 (for servers) to 100 (for desktop)
+
+---
+
+* **Hibernation File**
+  * Win 2000 or greater
+  * allows the OS to store the current state of operation when you turn off the computer, or the system goes into sleep mode
+  * during hibernation everything from memory is copied to the disk in a file called `hiberfil.sys`
+  * when the computer is restored, the system moves to the saved state
+  * hibernation files are a good source of information as they store data in RAM file without having to run special tools
+
+---
+
+## Hashing and Integrity
+
+* most common hash to work with is Message Digest 5 (MD5)
+  * due to collisions, an event where two different data values can have the same hash value, MD5 is no longer used as a secure standard
+* other common hashes include SHA1, and SHA256
+  * SHA256 is taking over as the most common algorithm to use
+  * `get-filehash -algorithm md5 <file>`
+  * `sha256sum <file>`
+  * `md5sum <file>`
+  * `sha1sum <file>`
+
+---
+
