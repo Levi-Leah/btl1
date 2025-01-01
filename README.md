@@ -44,3 +44,5 @@
 [Introduction to Digital Forensics](files/intro-to-digital-forensics.md)
 
 [Digital Forensics Fundamentals](files/digital-forensics-fundamentals.md)
+
+[Digital Evidence Collection](files/digital-evidence-collection.md)
