@@ -375,3 +375,8 @@
 
 ---
 
+* **Evidence Integrity**
+  * in most investigations involving a hard drive, a hash will be generated from the hard drive, and then a complete copy of the storage media will be taken at a bit-by-bit level, meaning that everything possible from the disk is copied to a fresh hard drive
+  * new hard drive then has its hash generated, to ensure that this is the exact same value as the original, proving that an exact copy was successfully generated
+
+---
