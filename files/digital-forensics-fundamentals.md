@@ -205,3 +205,101 @@
 
 ---
 
+## Digital Evidence and Handling
+
+* threat actors very easily manipulate digital evidence; it should be verified before it can be trusted
+* digital evidence is difficult to destroy, easy to modify, easy to duplicate, potentially more expressive, and more readily available
+* some courts have sometimes treated digital evidence differently for purposes of authentication, hearsay, the best evidence rule, and privilege
+  * often attacked for its authenticity due to the ease with which it can be modified
+    * courts are beginning to reject this argument without proof of tampering
+* 
+
+---
+
+* **Digital Evidence Forms**
+  * **E-mails**
+  * **Digital Photographs**
+    * extra information may be present as photo metadata
+    * can include the location and device used to take the photograph
+  * **Logs**
+  * **Files**
+    * notes, code, images, installed software, etc.
+  * **Messages**
+  * **Browser History**
+  * **Backups**
+  * **Video/audio files**
+    * could also have metadata
+
+---
+* **evidence handling**
+  * mistakes in how evidence is acquired can lead to that evidence being tainted and, subsequently, not forensically sound
+  * **Altering the original evidence**
+    * Actions taken by digital forensics examiners should not alter the original evidence
+      * e.g., forensic analysts should not access a running system if they do not have to
+    * some of the tasks performed by forensics have the potential to alter some of the evidence
+      * incorporating proper documentation and having a justifiable reason can reduce the chance that evidence will be deemed tainted
+  * **Using write-blockers**
+    * most forensic software tools have built-in software write blockers
+    * used to keep the OS from making any changes to the original media and to keep it from erasing or damaging potential evidence
+    * **Software write blockers** work at the operating system level and are specific to the operating system
+    * **Physical write blocker** works at the hardware level and can work with any operating system
+      * intercepting or blocking electrical signals to the storage device
+  * **Document**
+    * every action that is taken should be documented
+    * includes detailed notes, diagrams, and photographs
+    * allows examiners to reconstruct the chain of events if ever the integrity of evidence is called into question
+
+---
+
+## Volatile evidence
+
+* Volatile evidence is evidence that can be lost when a system is powered down
+  * network equipment
+    * active connections or log data that is stored on the device
+  * laptops and desktops
+    * running memory or the Address Resolution Protocol (ARP) cache
+* The Internet Engineering Task Force (IETF) has put together [Guidelines for Evidence Collection and Archiving (RFC 3227)](https://datatracker.ietf.org/doc/rfc3227/)
+
+---
+
+* **Order of Volatility**
+* 1 being the most volatile, and 6 being the least volatile
+* ensure that volatile evidence is collected and moved to a non-volatile medium, such as an external hard drive, as quickly as possible
+  1. **Registers & Cache**
+     * contents of the CPU cache and registers are extremely volatile since they are constantly changing
+     * investigator needs to retrieve data from the cache and register immediately before that evidence is lost
+  2. **Memory**
+     * fast, temporary type of memory in which programs, applications and data are stored
+     * information located on RAM can be lost if there is a power spike or if the system is disconnected from power
+     * can include very useful data about running processes, network connections, and much more
+  3. **Disk (HDD and SSD)**
+      * once data has been overwritten, it is impossible to recover it
+        * SSDs have the additional risk of Garbage Collection or TRIM deleting files
+      * if the system is offline then the disk space can’t be overwritten and the disk is no longer considered volatile
+  4. **Remote Logging and Monitoring Data**
+      * volatility of the data is higher than with HDD/SSD but the data is not that vital
+        * we want to collect hard drive data first
+  5. **Physical Configuration, Network Topology, Archival Media**
+      * items that are either not that vital in terms of the data or are not at all volatile
+      * physical configuration and network topology could help an investigation but is not going to have a tremendous impact
+      * archived data is usually located on a separate physical device
+        * USB drive or external hard drive
+
+---
+
+## Metadata and File Carving
+
+* metadata is data about data
+* file carving is a process of searching for files in a data stream and is used to carve deleted files from disk images
+  * if haven’t been overwritten with new data
+* **metadata**
+  * `ls -lisap`
+  * `stat`
+  * `exiftool`
+  ![](images/Screenshot%20from%202025-01-01%2019-51-49.png)
+* **file carving**
+  * `scalpel`
+    * mod the `/etc/scalpel/scalpel.conf` or `/etc/scalpel.conf` if needed
+  * `chown`
+
+---
