@@ -122,4 +122,52 @@
 * **ID 4634 (Logoff)**
   * logoff from the current session
 
-## 
+## Windows Artifacts - Recycle Bin
+
+* Recycle Bin is a system folder designed to temporarily store deleted files and folders before they are permanently removed from the computer's hard drive or storage device
+* once the Recycle Bin is emptied, the items within it are considered permanently deleted
+
+---
+
+* On Windows 10, the Recycle Bin directory for all users is located at `C:\$Recycle.Bin`
+  * lost if user empties the bin
+  * on CLI use `dir /a` cause folders are hidden
+  ![](images/Screenshot%20from%202025-01-05%2002-57-17.png)
+  * SIDs are used as the names. To retrieve the username `wmic useraccount get name,SID`
+  ![](images/Screenshot%20from%202025-01-05%2002-55-32.png)
+  * two files are generated whenever a file is deleted by a user:
+    * files that begin with `$R` followed by a random string
+      * contain the true file contents of the recycled file
+    * files that begin with `$I` and end in the same string as the `$R `file counterpart
+      * contain the metadata
+      * the original filename, path, size, and timestamp of when the file was deleted
+  * `RBCmd.exe -f $I<FILE_NAME>`
+    * or `-d` flag
+    * `--csv /dir` to output to csv
+  * to find the largest file `find . -type f -exec du -h {} + | sort -rh | head -n 1`
+  * to find dir w/ the most files:
+    * `a=$(ls /c/\$Recycle.Bin/)`
+    * `for i in $a; do echo "$i: $(find "$i" -type f -name "\$R*" | wc -l)"; done`
+  * to get account name from SID `wmic useraccount where sid="<SID>" get name`
+  * to see deleted accounts look up ID `4726` in Windows Logs > Security
+
+---
+
+* tools that can be used
+  * Command Prompt (CMD)
+  * RBCmd - [EricZimmerman/RBCmd: Recycle bin artifact parser](https://github.com/EricZimmerman/RBCmd)
+  * CSVQuickViewer
+
+---
+
+* **Recovery of deleted files**
+  * files that have been recently deleted and are still present in the Recycle Bin can be easily restored
+* **Tracing user activity**
+  * presence of specific files in the Recycle Bin can indicate a user's attempt to delete evidence or conceal their activities
+  * you can analyze the metadata of the deleted files, such as timestamps and file paths, to establish a timeline of events and identify potential motives or patterns of behavior
+* **File remnants and data carving**
+  * underlying data of the deleted files may still be present on the storage device as the actual data remains until it is overwritten by new data
+  * data carving can be used to recover these remnants and reconstruct the deleted files
+* **Analysis of Recycle Bin artifacts**
+  * Recycle Bin maintains several system files that store information about the deleted items, such as their original file paths, deletion timestamps, and other metadata
+  * 
