@@ -46,3 +46,5 @@
 [Digital Forensics Fundamentals](files/digital-forensics-fundamentals.md)
 
 [Digital Evidence Collection](files/digital-evidence-collection.md)
+
+[Windows Investigations](files/windows-investigations.md)
