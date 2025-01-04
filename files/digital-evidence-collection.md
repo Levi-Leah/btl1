@@ -88,3 +88,109 @@
 
 ## Disk Imager: FTK Imager
 
+* **Dumping RAM**
+  1. File > Capture Memory
+  2. Add filepath e.g. `~/dir/memorydump.mem`
+  * You can output it to other tools such as Volatility for analysis purposes
+* **Hard Drive Imaging**
+  * IRL
+    ![](images/Screenshot%20from%202025-01-04%2019-45-20.png)
+    * hard drive gathered from a crime scene will be connected to a forensic workstation with a clean hard drive attached
+    * write-blocker will be used between the workstation and the suspect hard drive
+    * analyst will then start a bit-by-bit copy of the suspect’s hard drive to the blank one
+      * can take an extremely long amount of time
+  * We can create a system `.img` file using FTK Imager
+    1. File > Create Disk Image
+    2. Select source
+    3. Fill out evidence item info
+    4. Select output destination
+    5. Set format type to `.E01` file
+        * This filetype is used by analysis tools, such as the enterprise-grade forensics triage software EnCase
+    6. Set the Image Fragment Size to 0MB
+       * disk image won’t be split into smaller segments; will be all in one file
+  * alternatively, use `ProcDump`
+    * system administrator tool that is in the Sysinternals suite of tools from Microsoft
+    1. Run PowerShell as admin
+    2. Get PID of the running process (e.g. malware running on a system):
+
+        `Get-Process | findstr -I <PROCESS_NAME>`
+
+    3. Run `ProcDump`:
+
+        `.procdump.exe -ma <PID>`
+
+---
+
+## Live Forensics
+
+* branch of digital forensics that focuses specifically on computers and other IT systems that are powered on
+* volatile artifacts often only exist while a system is turned on, and shutting the system off would cause these artifacts to be lost
+* it’s crucial to collect it, but not jeopardize other data that could be affected by aspects such as SSDs that use Garbage Collection or TRIM
+* the possibility that evidence is stored in RAM is very high
+* while there are ways to preserve it, acquiring this information while the system is online is the most effective
+* live forensics can battle methods criminals use to prevent analysis:
+  * full disk encryption
+    * can sometimes be reversed by extracting the encryption key from RAM
+  * using live CDs instead of an installed OS
+  * cloud storage
+    * cloud or other internet-based storage can be detected and downloaded while the machine is still running and connected to the service provider
+
+---
+
+## Live Acquisition: KAPE
+
+* Kroll Artifact Parser and Extractor
+* can target essentially any device or storage location, find forensically useful artifacts, and parse them within a few minutes
+* during a digital investigation:
+  * disk imager should be initialized to collect a full disk image of the target system
+  * KAPE should be run alongside to immediately collect important evidence, even before the full disk image has been acquired
+* possible to deploy KAPE on a large scale using PowerShell to download, run, and send the results from KAPE back to the security team
+* Ypu can retrieve Windows event logs, antivirus logs, file system metadata, log files, deleted files, emails, and absolutely tons more
+* `kape.exe`
+* `gkape.exe` - GUI
+  ![](images/Screenshot%20from%202025-01-04%2019-56-20.png)
+  1. Choose target source
+  2. Select targets
+  3. Choose target destination
+
+---
+
+## Evidence Destruction
+
+* **Degaussing**
+  * when exposed to the powerful magnetic field of a degausser, the magnetic data on a tape or hard disk is neutralized or erased
+  * guaranteed form of hard drive erasure
+  * guarantee that your information is no longer retrievable
+
+---
+
+* **File Shredding**
+  * can sometimes be the same as manually deleting a file or folder
+  * not a secure method of deleting digital evidence, as there is the possibility it can be recovered
+  * some file shredding programs utilize different methods to overwrite or sanitize the data that has been selected for shredding
+    * [DoD 5220.22-M Wipe Method](https://www.lifewire.com/data-sanitization-methods-2626133)
+      * Writes a zero and verifies the write
+      * Writes a one and verifies the write
+      * Writes a random character and verifies the write
+
+---
+
+* **Physical Shredding**
+  * destroying physical storage media so that it can’t be reassembled and accessed
+  * hard drive, USB, or other hardware will be shredded into small pieces using industrial-grade destruction equipment
+  * destroys the drive platters, mechanisms, and the electronic components rendering the data unrecoverable
+
+---
+
+* **Hydraulic Crusher**
+  * uses a hydraulic press with a metal rod that is pushed straight through the hard drive
+  * punching a hole with approximately 3,400 kilos of force pressure completely destroys the drive platters, rippling and fracturing the magnetic surfaces and rendering the drive data unrecoverable
+  * other methods can include bending the hard drives until they snap
+
+---
+
+* **Overwriting**
+  * useful in case you want to reuse the equipment as it doesn't result in physical destruction
+  * e.g. write zeros to a hard drive, overwriting any existing data
+  * Windows offers a function called Diskpart that allows you to completely clear a hard drive from the command prompt
+
