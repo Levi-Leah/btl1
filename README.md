@@ -50,3 +50,5 @@
 [Windows Investigations](files/windows-investigations.md)
 
 [Linux Investigations](files/linux-investigations.md)
+
+[Memory Analysis With Volatility](files/memory-analysis-with-volatility.md)
