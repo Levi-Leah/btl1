@@ -48,3 +48,5 @@
 [Digital Evidence Collection](files/digital-evidence-collection.md)
 
 [Windows Investigations](files/windows-investigations.md)
+
+[Linux Investigations](files/linux-investigations.md)
