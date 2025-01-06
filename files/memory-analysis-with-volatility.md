@@ -68,3 +68,28 @@
 * GUI
 * available on Win and Mac
 ![](images/Screenshot%20from%202025-01-06%2020-04-36.png)
+
+## Disk Analysis With Autopsy
+
+* forensic-grade tool that is used by the military, law enforcement, and corporate examiners to investigate what happened on a smartphone or a computer
+* has a plug-in architecture that allows the user to find add-on modules or even develop custom modules written in Java or Python
+* built-in on Kali Linux
+* can also be downloaded on Windows
+* you can
+  * **Multi-User Cases**: Collaborate on large cases with other examiners.
+  * **Keyword Search**: Find files mentioning specific terms or matching regex patterns.
+  * **Timeline Analysis**: Visualize system events to identify activity.
+  * **Web Artifacts**: Extract web activity from common browsers.
+  * **LNK File Analysis**: Identify shortcuts and accessed documents.
+  * **Email Analysis**: Parse MBOX messages (e.g., Thunderbird).
+  * **Registry Analysis**: Use RegRipper to detect recently accessed documents and USB devices.
+  * **EXIF Data**: Extract geolocation and camera info from JPEG files.
+  * **File Type Sorting**: Group files by type (e.g., images, documents).
+  * **Media Playback**: View videos and images without external viewers.
+  * **Thumbnail Viewer**: Quickly preview image thumbnails.
+  * **File System Analysis**: Supports NTFS, FAT, HFS+, Ext, ISO9660, Yaffs2, UFS, and more.
+  * **Tags**: Add tags and comments to files for classification.
+  * **Unicode Strings Extraction**: Extract strings in multiple languages (e.g., Arabic, Chinese, Japanese).
+  * **File Type Detection**: Detect mismatched file signatures and extensions.
+  * **Interesting Files Module**: Flag files/folders based on names or paths.
+  * **Android Support**: Extract SMS, call logs, cont
