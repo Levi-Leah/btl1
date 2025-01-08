@@ -53,6 +53,7 @@
 
 [Memory Analysis With Volatility](files/memory-analysis-with-volatility.md)
 
-## Security Information and Event Monitoring
+## Security Information and Event Management
 
 [Intro to SIEM](files/intro-to-siem.md)
+[Logging and Aggregation](files/logging.md)
