@@ -119,3 +119,34 @@
   * Event Viewer allows us to create custom search profiles, called “Custom Views”
   * use these to retrieve the event IDs we want from a system, removing all of the extra noise that we’re not interested in
   * can be useful if a system is not connected to a SIEM, allowing us to retrieve specific event logs
+
+---
+
+* **Sysmon**
+  * a Windows system service and device driver that, once installed on a system, remains resident across system reboots to monitor and log system activity to the Windows event log
+  * provides detailed information about process creations, network connections, and changes to file creation time
+  * Pros
+    * Logs process creation with full command line for both current and parent processes
+    * Include a session GUID in each event to allow correlation of events on the same logon session
+    * Logs loading of drivers or DLLs with their signatures and hashes
+    * Optionally logs network connections, including each connection’s source process, IP addresses, port numbers, hostnames, and port names
+    * Detects changes in file creation time to understand when a file was really created
+      * Modification of file create timestamps is a technique commonly used by malware to cover its tracks
+    * Rule filtering to include or exclude certain events dynamically
+    * Installation
+      * Download Sysmon zip from the Sysinternals website
+      * Once you’ve extracted the folder within the Zip file, open a command prompt as administrator and move to the location of the executable files
+      * Use `sysmon -i` to begin the install, and click Agree when the EULA pops up
+      * Event Viewer > Custom View > Choose Sysmon as source and check all event levels
+
+---
+
+* **Windows Event Logs vs Sysmon Logs**
+  * win event logs suck balls so people created sysmon
+  * there’s just a ton more useful information compared to Windows event logs
+  * [Implementing Sysmon and Applocker - YouTube video](https://www.youtube.com/watch?t=491.&v=9qsP5h033Qk&feature=youtu.be)
+  * The problem with Sysmon is that it’s very broad, and can generate a lot of noise
+  * To combat this, we can use Sysmon configuration files
+    * [example config file](https://github.com/SwiftOnSecurity/sysmon-config)
+
+---
