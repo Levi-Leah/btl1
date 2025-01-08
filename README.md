@@ -52,3 +52,7 @@
 [Linux Investigations](files/linux-investigations.md)
 
 [Memory Analysis With Volatility](files/memory-analysis-with-volatility.md)
+
+## Security Information and Event Monitoring
+
+[Intro to SIEM](files/intro-to-siem.md)
