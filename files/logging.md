@@ -150,3 +150,50 @@
     * [example config file](https://github.com/SwiftOnSecurity/sysmon-config)
 
 ---
+
+* **Microsoft Azure logs**
+  * Logs in Azure, are primarily monitored through Azure Monitor and Log Analytic Workspaces
+  * Azure Monitor is able to pick up logs from a multitude of different Azure services such as, virtual machines, virtual networks, Azure Active Directory, and Azure Security Center, as well as on-premises services
+  * Azure has three primary categories of logs
+    * Control/Management logs
+    * Data Plane logs
+    * Processed Events
+  * These logs are fed to Azure through the Azure REST API, the Microsoft Graph API, JSON, and various other sources
+  * can be connected to different kinds of SIEMs such as Splunk or even Microsoft’s own Azure Sentinel.
+  * When investigating logs in Azure, you will need to use the [Kusto Query Language (KQL)](https://learn.microsoft.com/en-us/kusto/query/?view=azure-data-explorer&preserve-view=true) to query logs
+* **Amazon Web Services logs**
+  * GUI offers an easy way to access and manage resources, Amazon uses their own API for AWS
+  * [AWS Documentation](https://docs.aws.amazon.com/)
+* **OSQuery**
+  * by facebook
+  * operating system instrumentation framework that exposes an operating system as a high-performance relational database
+  * using SQL, you can write a single query to explore any given data, regardless of the operating system
+  * surprisingly good idea
+* **Moloch (Arkime)**
+  * stores and indexes network traffic in PCAP format, providing fast access via a web interface or APIs for browsing, searching, and exporting
+  * integrates with tools like Wireshark and scales across multiple systems to handle high traffic volumes
+
+---
+
+* **Log aggregation**
+  * process of collecting logs from multiple computing systems, parsing them, extracting structured data, and putting them together in a format that is easily searchable and explorable by modern data tools
+  * 4 common ways to aggregate logs; many log aggregation systems combine multiple methods
+    * **Syslog**
+      * NT admins can set up a Syslog server that receives logs from multiple systems, storing them in an efficient, condensed format that is easily queryable
+      * Log aggregators can directly read and process Syslog data.
+    * **Event stream**
+      * Protocols like SNMP, Netflow, and IPFIX allow network devices to provide standard information about their operations, which can be intercepted by the log aggregator, parsed, and added to central log storage
+    * **Log Collectors**
+      * Software agents that run on network devices, capture log information, parse it and send it to a centralized aggregator component for storage and analysis
+    * **Direct Access**
+      * Log aggregators can directly access network devices or computing systems, using an API or network protocol to directly receive logs
+      * requires custom integration for each data source
+  * when pulled into a SIEM platform, there are 2 categories
+    * **Structured data**
+      * usually logs for Apache, IIS, Windows events, Cisco logs, and some other manufacturers
+      * have clearly-defined fields (e.g., `src_ip`) and are similar to other structured logs
+      * relatively easy to parse and normalize
+    * **Unstructured data**
+      * typically comes from a custom-built application where each message can be printed differently in different operations and the event itself can span multiple lines with no defined event start point, event endpoint, or both
+      * likely to be the majority of the data being sent to the SIEM
+    * to get all logs to follow a similar format to make it easier to perform searches across a large set of different logs, where possible, we can use normalization techniques
