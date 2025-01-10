@@ -56,4 +56,15 @@
 ## Security Information and Event Management
 
 [Intro to SIEM](files/intro-to-siem.md)
+
 [Logging and Aggregation](files/logging.md)
+
+[Corelation](files/corelation.md)
+
+## Splunk
+
+[Splunk search](files/sp-search.md)
+
+[Splunk alerts](files/sp-alerts.md)
+
+[Splunk dashboards](files/sp-dashboard.md)
