@@ -68,3 +68,8 @@
 [Splunk alerts](files/sp-alerts.md)
 
 [Splunk dashboards](files/sp-dashboard.md)
+
+## Incident response
+
+[Introduction to incident response](files/intro-to-incident-response.md)
+
