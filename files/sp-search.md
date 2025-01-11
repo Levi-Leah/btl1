@@ -27,3 +27,20 @@
       * will display table w/ specified values and exclude anything else
   * **Uniq/dedup**
     * `| table srcip | uniq` | `| table action | dedup action`
+
+```[cmd]
+index="botsv1" sourcetype="stream:http" http_method=POST uri="/joomla/administrator/index.php" src_i
+index="botsv1" sourcetype="stream:http" http_method=POST uri="/joomla/administrator/index.php" src_i
+curl ipinfo.io/40.80.148.4
+url_domain="imreallynotbatman.com"
+
+index="botsv1" sourcetype="xmlwineventlog" *.exe | rex field=_raw "(?<exe_name>\b[\w-]+\.exe\b)" | stats count by exe_name| sort exe_name
+
+we8105desk.waynecorpinc.local, 192.168.250.100, bob.smith
+
+index="botsv1" sourcetype="xmlwineventlog" Image="C:\\Users\\bob.smith.WAYNECORPINC\\AppData\\Roaming\\{35ACA89F-933F-6A5D-2776-A3589FB99832}\\osk.exe" DestinationPort=6892 | stats count by DestinationIp | uniq
+
+ Fortigate_UTM log; internal IP address is in the ‘dstip’ field
+ suricata source "signature":"ET SCAN Acunetix Version 6 (Free Edition) Scan Detected"
+ index=* sourcetype=suricata event_type=alert | stats count by severity
+```
