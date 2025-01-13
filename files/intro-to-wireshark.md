@@ -46,3 +46,50 @@
 
 ---
 
+* **Applying Display Filters**
+  * controls which packets are shown in the packet list
+  * `tcp.port == 80`
+    * displays packets that have a source or destination port of 80 (HTTP)
+  * `tcp.window_size_value >= 8000`
+    * displays TCP packets with a window size of 8000 bytes or over
+  * filter statements can be chained by using logical operators
+    * `&&` - and
+    * `||`, `or` - or
+    * `not`, `!` - not
+    * `ip.dst_host == 192.168.1.7 && tcp`
+      * display TCP packets addressed to 192.168.1.7
+    * `ntp or udp.port == 20000`
+      * display either NTP traffic or UDP traffic from/to port 20000
+    * To follow a stream, right-click on a packet within the stream, and click **Follow** > **TCP/UDP/SSL/HTTP Stream**
+    ![](images/Screenshot%20from%202025-01-13%2016-47-11.png)
+    * HTTP requests should be highlighted in red and HTTP responses in blue
+    * To add a packet header value as a column, right-click the header field and select Apply as Column
+    ![](images/Screenshot%20from%202025-01-13%2016-49-00.png)
+
+---
+
+* **Viewing Capture Statistics**
+  * Wireshark collects different statistics about the traffic in the capture file
+    * e.g., percentage proportions of protocols, the number of bytes transmitted to different hosts, the IP addresses of all the hosts that has appeared in the capture
+  * helpful when identifying potential exfiltration vectors and the exfiltrating host based on network usage
+  * can also identify data exfiltration through unusual or unused protocols
+    * If you notice a very small portion of FTP traffic in a large network that doesn’t use FTP, it might be worth it to check out the FTP traffic and make sure the traffic is legitimate
+    * Quite a few of network analysis challenges in CTFs dealing with data exfiltration can be solved by identifying unusual protocols from the Protocol Hierarchy window
+  * **Protocol Hierarchy**
+    * displays the percentages of the number of packets or bytes in a protocol conversation against the entire traffic
+    * protocols are organized in layers from Layer 2 to Layer 7
+    ![](images/Screenshot%20from%202025-01-13%2016-52-41.png) 
+    * To check a specific protocol traffic in the packet list, right-click on a protocol and select **Apply as Filter** > **Selected/Not Selected**
+  * **Conversations**
+    * provides a wealth of information on the traffic, including which hosts have communicated to other hosts, on which ports, and with a total of how many bytes and packets in the conversation
+    * great for identifying the different MAC or IP addresses that a host has communicated with, and the volume of traffic between them
+    * can be very helpful in investigating data exfiltration attempts, as it can identify the attacker by IP address
+    * If a host has been transmitting many packets and bytes to an unidentified IP address without receiving many packets in return, an exfiltration could have been occurring
+    ![](images/Screenshot%20from%202025-01-13%2016-55-46.png)
+    * you can right-click on a line, select **Apply as Filter** > **Selected/Not Selected** and choose the direction of traffic to apply a filter for the line
+  * **Endpoints**
+    * shows all of the different hosts that appear in the capture and the amount of packets/bytes they sent and received
+    * useful in sorting hosts by their network activity, by either transmission or receiving volume, or by both
+    * If a host has been receiving much more traffic than they have been transmitting, the host is probably downloading a large file
+    *  if the host has been transmitting more than they have been receiving, the host is probably uploading files or backing up to remote storage
+    ![](images/Screenshot%20from%202025-01-13%2016-58-22.png)
