@@ -78,3 +78,5 @@
 [Preparation phase](files/ir-prep.md)
 
 [Detection and Analysis Phase](files/ir-detection-and-analysis.md)
+
+[Intro to Wireshark](files/intro-to-wireshark.md)
