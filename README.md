@@ -1,5 +1,7 @@
 # BLT1 Notes
 
+[Cheat sheet](files/cheat-sheet.md)
+
 ## Security Fundamentals
 
 [Security controls](files/security-controlls.md)
@@ -73,3 +75,6 @@
 
 [Introduction to incident response](files/intro-to-incident-response.md)
 
+[Preparation phase](files/ir-prep.md)
+
+[Detection and Analysis Phase](files/ir-detection-and-analysis.md)
