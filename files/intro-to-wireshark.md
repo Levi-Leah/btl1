@@ -93,3 +93,16 @@
     * If a host has been receiving much more traffic than they have been transmitting, the host is probably downloading a large file
     *  if the host has been transmitting more than they have been receiving, the host is probably uploading files or backing up to remote storage
     ![](images/Screenshot%20from%202025-01-13%2016-58-22.png)
+
+---
+
+```[cli]
+!tcp && eth.src != 0a:00:27:00:00:00
+Statistics > Conversations
+# see downloaded files ands save them
+Wireshark > File > Export Objects
+md5sum cr4ckx0r.zip | cut -c 1-5
+FTP code 230 for successful login
+FTP ctrl+F RETR to search for downloads
+View > Time Display Format > Date and Time of Day
+```
