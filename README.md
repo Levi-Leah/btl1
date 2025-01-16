@@ -80,3 +80,9 @@
 [Detection and Analysis Phase](files/ir-detection-and-analysis.md)
 
 [Intro to Wireshark](files/intro-to-wireshark.md)
+
+[CMD and PowerShell For Incident Response](files/powershell-and-cmd-for-ir.md)
+
+[DeepBlueCLI](files/deepblue-cli.md)
+
+[Case management](files/case-management.md)
