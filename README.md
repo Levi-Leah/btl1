@@ -71,11 +71,13 @@
 
 [Splunk dashboards](files/sp-dashboard.md)
 
-## Incident response
+## Preparation Phase
 
 [Introduction to incident response](files/intro-to-incident-response.md)
 
 [Preparation phase](files/ir-prep.md)
+
+## Detection and Analysis Phase
 
 [Detection and Analysis Phase](files/ir-detection-and-analysis.md)
 
@@ -85,4 +87,16 @@
 
 [DeepBlueCLI](files/deepblue-cli.md)
 
+## Case management
+
 [Case management](files/case-management.md)
+
+## Containment, Eradication, and Recovery Phase
+
+[Incident Containment](files/incident-containment.md)
+
+[Taking Forensic Images](files/taking-forensic-images.md)
+
+[Identifying and Removing Malicious Artifacts](files/identifying-malicious-artifacts.md)
+
+[Identifying Root Cause and Recovery](files/identifying-root-cause-and-recovery.md)
