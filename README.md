@@ -108,3 +108,13 @@
 [Reporting](files/reporting.md)
 
 ## MITRE ATT&CK Framework
+
+* collection of tactics and techniques used by adversaries, which can be utilized by both blue and red team members to improve the security posture of an organization
+* [MITRE ATT&CK Navigator](https://mitre-attack.github.io/attack-navigator/) for defensive roles
+* [ATT&CK Training](https://attack.mitre.org/resources/learn-more-about-attack/training/)
+* **HISTCONTROL**
+  * Adversaries may configure HISTCONTROL to not log all command history. The HISTCONTROL environment variable keeps track of what should be saved by the history command and eventually into the ~/.bash_history file when a user logs out
+* Hide your logs, ensure no one can tamper with them, and minimalize the time between a log being generated and it is forwarded to an aggregation point so it can be ingested by the SIEM. Once it’s stored there, the chance of it being modified or deleted by an adversary is extremely low
+* [How to Crack Passwords using John The Ripper – Pentesting Tutorial](https://www.freecodecamp.org/news/crack-passwords-using-john-the-ripper-pentesting-tutorial/)
+* [NIST SP 800-63B Digital Identity Guidelines](https://pages.nist.gov/800-63-3/sp800-63b.html#sec5)
+
