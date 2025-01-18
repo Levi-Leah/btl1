@@ -100,3 +100,11 @@
 [Identifying and Removing Malicious Artifacts](files/identifying-malicious-artifacts.md)
 
 [Identifying Root Cause and Recovery](files/identifying-root-cause-and-recovery.md)
+
+## Lessons Learned & Reporting
+
+[Lessons Learned](files/lessons-learned.md)
+
+[Reporting](files/reporting.md)
+
+## MITRE ATT&CK Framework
