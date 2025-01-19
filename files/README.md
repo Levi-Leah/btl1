@@ -4611,7 +4611,7 @@ index="botsv1" sourcetype="xmlwineventlog" Image="C:\\Users\\bob.smith.WAYNECORP
 
 ---
 
-```[cli]
+```[cmd]
 !tcp && eth.src != 0a:00:27:00:00:00
 Statistics > Conversations
 # see downloaded files ands save them
@@ -4620,7 +4620,9 @@ md5sum cr4ckx0r.zip | cut -c 1-5
 FTP code 230 for successful login
 FTP ctrl+F RETR to search for downloads
 View > Time Display Format > Date and Time of Day
-```# CMD and PowerShell For Incident Response
+```
+
+# CMD and PowerShell For Incident Response
 
 * **CMD**
   * run all as admin
@@ -4672,7 +4674,9 @@ View > Time Display Format > Date and Time of Day
 ```[cmd]
 Get-Service | Where Status -eq "Running" | Out-GridView
 Get-ScheduledTask | Where State -eq "Ready"
-```# DeepBlueCLI
+```
+
+# DeepBlueCLI
 
 * DeepBlueCLI is a PowerShell script that was created by SANS to aid with the investigation and triage of Windows Event logs
 * This tool is able to identify a range of attacks
@@ -4692,7 +4696,9 @@ Get-ScheduledTask | Where State -eq "Ready"
   * `./DeepBlue.ps1 ../Log1.evtx`
   * for local system:
     * `./DeepBlue.ps1 -log security`
-    * `./DeepBlue.ps1 -log system`# Case management
+    * `./DeepBlue.ps1 -log system`
+
+# Case management
 
 * real-world security teams use tools such as ServiceNow, IBM Resilient, Jira Service Management, and TheHive
 * [TheHive - GitHub](https://github.com/TheHive-Project/TheHive) is open source
