@@ -4736,7 +4736,9 @@ Get-ScheduledTask | Where State -eq "Ready"
     * Blocking rules in the local firewall
     * Host intrusion prevention system (HIPS) actions, such as device isolation
 
----# Taking Forensic Images
+---
+
+# Taking Forensic Images
 
 * Forensic images should be taken of the hard drives of affected systems, and also memory dumps to capture any artifacts that may be in RAM
 * In some cases, the forensic image of the drive may be stored on a USB so that multiple analysts can analyze it, and make it easier to store, as opposed to only having one copy on a forensic laptop or workstation
